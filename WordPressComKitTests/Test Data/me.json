@@ -1,0 +1,32 @@
+{
+  "ID": 67137,
+  "display_name": "Boogie Woogie",
+  "username": "boogiewoogie",
+  "email": "boogiewoogie@example.com",
+  "primary_blog": 123456,
+  "primary_blog_url": "http://doesntexist.wordpress.com",
+  "language": "en",
+  "token_site_id": false,
+  "token_scope": [
+    "global"
+  ],
+  "avatar_URL": "https://1.gravatar.com/avatar/moocow123?s=96&d=identicon",
+  "profile_URL": "http://en.gravatar.com/moocow123",
+  "verified": true,
+  "email_verified": true,
+  "date": "2006-01-13T18:04:27+00:00",
+  "site_count": 166,
+  "visible_site_count": 22,
+  "has_unseen_notes": true,
+  "newest_note_type": "follow",
+  "phone_account": false,
+  "meta": {
+    "links": {
+      "self": "https://public-api.wordpress.com/rest/v1.1/me",
+      "help": "https://public-api.wordpress.com/rest/v1.1/me/help",
+      "site": "https://public-api.wordpress.com/rest/v1.1/sites/5836086",
+      "flags": "https://public-api.wordpress.com/rest/v1.1/me/flags"
+    }
+  },
+  "is_valid_google_apps_country": true
+}
