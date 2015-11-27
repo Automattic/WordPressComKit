@@ -1,7 +1,7 @@
 import Foundation
 
 func readFile(filename: String) -> NSData? {
-  if let path = NSBundle(forClass: WordPressComKitTests.self).pathForResource(filename, ofType: "json") {
+  if let path = NSBundle(forClass: MeServiceTests.self).pathForResource(filename, ofType: "json") {
     do {
       let jsonData = try NSData(contentsOfFile: path, options:[.DataReadingMappedIfSafe])
       return jsonData

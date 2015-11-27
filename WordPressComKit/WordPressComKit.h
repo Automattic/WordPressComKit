@@ -1,11 +1,3 @@
-//
-//  WordPressComKit.h
-//  WordPressComKit
-//
-//  Created by Aaron Douglas on 11/25/15.
-//  Copyright © 2015 Automattic. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for WordPressComKit.

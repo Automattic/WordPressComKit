@@ -1,11 +1,3 @@
-//
-//  MeService.swift
-//  WordPressKit
-//
-//  Created by Aaron Douglas on 11/25/15.
-//  Copyright © 2015 Automattic. All rights reserved.
-//
-
 import Foundation
 
 public class MeService {
@@ -48,8 +40,25 @@ public class MeService {
             me.displayName = json!["display_name"] as? String
             me.username = json!["username"] as! String
             me.email = json!["email"] as? String
-            me.primaryBlogID = json!["primaryBlogID"] as? Int
-            
+            me.primaryBlogID = json!["primary_blog"] as? Int
+            if let primaryBlogURLPath = json!["primary_blog_url"] as? String {
+                me.primaryBlogURL = NSURL(string: primaryBlogURLPath)
+            }
+            me.language = json!["language"] as! String
+            if let avatarURLPath = json!["avatar_URL"] as? String {
+                me.avatarURL = NSURL(string: avatarURLPath)
+            }
+            if let profileURLPath = json!["profile_URL"] as? String {
+                me.profileURL = NSURL(string: profileURLPath)
+            }
+            me.verified = json!["verified"] as! Bool
+            me.emailVerified = json!["email_verified"] as! Bool
+            me.dateCreated = convertUTCWordPressComDate(json!["date"] as! String)
+            me.siteCount = json!["site_count"] as! Int
+            me.visibleSiteCount = json!["visible_site_count"] as! Int
+            me.hasUnseenNotes = json!["has_unseen_notes"] as! Bool
+            me.newestNoteType = json!["newest_note_type"] as? String
+            me.phoneAccount = json!["phone_account"] as! Bool
             
             completion(me, nil)
         }
