@@ -20,6 +20,7 @@
 		93340C821C0655F6004CCB0C /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = 93340C811C0655F6004CCB0C /* me.json */; };
 		939555631C08B73C001BC911 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939555621C08B73C001BC911 /* DateHelpers.swift */; };
 		939555651C08B8AB001BC911 /* DateHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939555641C08B8AB001BC911 /* DateHelpersTests.swift */; };
+		939555671C08BC54001BC911 /* me-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 939555661C08BC54001BC911 /* me-2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		93340C811C0655F6004CCB0C /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
 		939555621C08B73C001BC911 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		939555641C08B8AB001BC911 /* DateHelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpersTests.swift; sourceTree = "<group>"; };
+		939555661C08BC54001BC911 /* me-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "me-2.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				93340C811C0655F6004CCB0C /* me.json */,
+				939555661C08BC54001BC911 /* me-2.json */,
 			);
 			path = "Test Data";
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939555671C08BC54001BC911 /* me-2.json in Resources */,
 				93340C821C0655F6004CCB0C /* me.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

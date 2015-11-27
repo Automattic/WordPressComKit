@@ -1,0 +1,32 @@
+{
+  "ID": 552124769,
+  "display_name": "monkeybread",
+  "username": "monkeybread",
+  "email": "monkeybread@example.com",
+  "primary_blog": 12341234,
+  "primary_blog_url": "http://unknownthing.wordpress.com",
+  "language": "en",
+  "token_site_id": false,
+  "token_scope": [
+    "global"
+  ],
+  "avatar_URL": "https://2.gravatar.com/avatar/25c423b6c3907669104c65c9f03a185d?s=96&d=identicon",
+  "profile_URL": "http://en.gravatar.com/monkeybread",
+  "verified": true,
+  "email_verified": true,
+  "date": "2013-09-12T19:20:31+00:00",
+  "site_count": 1,
+  "visible_site_count": 1,
+  "has_unseen_notes": false,
+  "newest_note_type": "",
+  "phone_account": false,
+  "meta": {
+    "links": {
+      "self": "https://public-api.wordpress.com/rest/v1.1/me",
+      "help": "https://public-api.wordpress.com/rest/v1.1/me/help",
+      "site": "https://public-api.wordpress.com/rest/v1.1/sites/552124769",
+      "flags": "https://public-api.wordpress.com/rest/v1.1/me/flags"
+    }
+  },
+  "is_valid_google_apps_country": true
+}
