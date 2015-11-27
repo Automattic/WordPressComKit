@@ -1,21 +1,17 @@
 import Foundation
 
 public class Site {
-    var ID: Int!
-    var name: String?
-    var description: String?
-    var URL: NSURL!
-    var jetpack = false
-    var postCount = 0
-    var subscribersCount = 0
-    var language = "en"
-    var visible = true
-    var isPrivate = false
-    var isFollowing = true
-    var userCanManage = true
-    var isVip = false
-    var isMultisite = true
-    var singleUserSite = true
+    public var ID: Int!
+    public var name: String?
+    public var description: String?
+    public var URL: NSURL!
+    public var jetpack = false
+    public var postCount = 0
+    public var subscribersCount = 0
+    public var language = "en"
+    public var visible = true
+    public var isPrivate = false
+    public var timeZone: NSTimeZone!
     
     //    "icon": {"img": "https://secure.gravatar.com/blavatar/6f0ad402b5cbfe40cef23c63488742a7", "ico": "https://secure.gravatar.com/blavatar/1de1e43955ffc6998dbd037cb6fb0440"}
     //    "logo": {"id": 0, "sizes": [], "url": ""}
