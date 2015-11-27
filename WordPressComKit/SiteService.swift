@@ -58,6 +58,56 @@ public class SiteService {
         task.resume()
     }
     
-    func fetchSitesForUserID(userID: Int, completion:([Site], NSError?) -> Void) {
+    public func fetchSites(completion:([Site]?, NSError?) -> Void) {
+        let baseURL = NSURL(string: "https://public-api.wordpress.com/rest/v1.1/")!
+        let url = NSURL(string: "me/sites", relativeToURL: baseURL)!
+        
+        let urlRequest = NSMutableURLRequest(
+            URL: url,
+            cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData,
+            timeoutInterval: 10.0 * 1000)
+        urlRequest.HTTPMethod = "GET"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = urlSession.dataTaskWithRequest(urlRequest) { (data, response, error) -> Void in
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            
+            var json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
+            
+            guard json != nil else {
+                completion(nil, NSError(domain: "com.automattic.WordPressKit", code: -1000, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Unexpected remote error preventing JSON parsing", comment: "JSON parsing error string")]))
+                return
+            }
+            
+            let sitesDictionary = json!["sites"] as! [[String: AnyObject]]
+
+            let sites = sitesDictionary.map({ (siteDictionary) -> Site in
+                let site = Site()
+                site.ID = siteDictionary["ID"] as! Int
+                site.name = siteDictionary["name"] as? String
+                site.description = siteDictionary["description"] as? String
+                site.URL = NSURL(string: siteDictionary["URL"] as! String)
+                site.jetpack = siteDictionary["jetpack"] as! Bool
+                site.postCount = siteDictionary["post_count"] as! Int
+                site.subscribersCount = siteDictionary["subscribers_count"] as! Int
+                site.language = siteDictionary["lang"] as! String
+                site.visible = siteDictionary["visible"] as! Bool
+                site.isPrivate = siteDictionary["is_private"] as! Bool
+                
+                let options = siteDictionary["options"] as? [String: AnyObject]
+                if let timeZoneName = options?["timezone"] as? String {
+                    site.timeZone = NSTimeZone(name: timeZoneName)
+                }
+
+                return site
+            })
+            
+            completion(sites, nil)
+        }
+        
+        task.resume()
     }
 }

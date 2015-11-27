@@ -39,9 +39,30 @@ class SiteServiceTests: XCTestCase {
             XCTAssertEqual(179, site!.postCount)
             XCTAssertEqual(233, site!.subscribersCount)
             XCTAssertEqual("en", site!.language)
+            XCTAssertEqual(true, site!.visible)
+            XCTAssertEqual(false, site!.isPrivate)
+            XCTAssertEqual(NSTimeZone(name: "America/Chicago"), site!.timeZone)
         }
         
         self.waitForExpectationsWithTimeout(2.0, handler: nil)
     }
-
+    
+    func testFetchSites() {
+        let jsonData = readFile("sites")
+        let urlResponse = NSHTTPURLResponse(URL: NSURL(string: "https://public-api.wordpress.com/rest/v1.1/me/sites")!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
+        MockNSURLSession.mockResponse = (jsonData, urlResponse: urlResponse, error: nil)
+        let expectation = self.expectationWithDescription("FetchMe")
+        
+        subject.fetchSites { sites, error -> Void in
+            expectation.fulfill()
+            
+            XCTAssertNotNil(sites)
+            XCTAssertNil(error)
+            
+            XCTAssertEqual(13, sites!.count)
+        }
+        
+        self.waitForExpectationsWithTimeout(2.0, handler: nil)
+    }
+    
 }
