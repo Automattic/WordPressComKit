@@ -28,6 +28,8 @@
 		939555711C08EC86001BC911 /* post.json in Resources */ = {isa = PBXBuildFile; fileRef = 939555701C08EC86001BC911 /* post.json */; };
 		939555731C08EC99001BC911 /* post-new.json in Resources */ = {isa = PBXBuildFile; fileRef = 939555721C08EC99001BC911 /* post-new.json */; };
 		939555751C08EE80001BC911 /* PostServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939555741C08EE80001BC911 /* PostServiceTests.swift */; };
+		939555771C08F9E9001BC911 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939555761C08F9E9001BC911 /* AuthenticationService.swift */; };
+		939555791C11E433001BC911 /* WordPressComAPIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939555781C11E433001BC911 /* WordPressComAPIHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		939555701C08EC86001BC911 /* post.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = post.json; sourceTree = "<group>"; };
 		939555721C08EC99001BC911 /* post-new.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "post-new.json"; sourceTree = "<group>"; };
 		939555741C08EE80001BC911 /* PostServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceTests.swift; sourceTree = "<group>"; };
+		939555761C08F9E9001BC911 /* AuthenticationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		939555781C11E433001BC911 /* WordPressComAPIHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPressComAPIHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 				93340C6F1C064BEE004CCB0C /* MeService.swift */,
 				93340C751C064F69004CCB0C /* PostService.swift */,
 				93340C771C064F8B004CCB0C /* SiteService.swift */,
+				939555761C08F9E9001BC911 /* AuthenticationService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				939555621C08B73C001BC911 /* DateHelpers.swift */,
+				939555781C11E433001BC911 /* WordPressComAPIHelpers.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -296,11 +302,13 @@
 			files = (
 				93340C701C064BEE004CCB0C /* MeService.swift in Sources */,
 				93340C741C064BF7004CCB0C /* Site.swift in Sources */,
+				939555791C11E433001BC911 /* WordPressComAPIHelpers.swift in Sources */,
 				93340C781C064F8B004CCB0C /* SiteService.swift in Sources */,
 				93340C731C064BF7004CCB0C /* Me.swift in Sources */,
 				93340C761C064F69004CCB0C /* PostService.swift in Sources */,
 				9395556F1C08DD04001BC911 /* Post.swift in Sources */,
 				939555631C08B73C001BC911 /* DateHelpers.swift in Sources */,
+				939555771C08F9E9001BC911 /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

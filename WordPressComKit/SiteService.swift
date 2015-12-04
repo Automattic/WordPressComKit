@@ -1,19 +1,24 @@
 import Foundation
 
 public class SiteService {
-    private var urlSession: NSURLSession!
+    private var bearerToken: String
+    private var urlSession: NSURLSession
     
-    public init() {
-        urlSession = NSURLSession.sharedSession()
+    convenience public init() {
+        self.init(bearerToken: "", urlSession: NSURLSession.sharedSession())
     }
     
-    public init(urlSession: NSURLSession) {
+    convenience public init(urlSession: NSURLSession) {
+        self.init(bearerToken: "", urlSession: urlSession)
+    }
+    
+    public init(bearerToken: String, urlSession: NSURLSession) {
+        self.bearerToken = bearerToken
         self.urlSession = urlSession
     }
     
     public func fetchSite(siteID: Int, completion: (Site?, NSError?) -> Void) {
-        let baseURL = NSURL(string: "https://public-api.wordpress.com/rest/v1.1/")!
-        let url = NSURL(string: "sites/\(siteID)", relativeToURL: baseURL)!
+        let url = NSURL(string: "sites/\(siteID)", relativeToURL: wordPressComBaseURL())!
         
         let urlRequest = NSMutableURLRequest(
             URL: url,
@@ -21,6 +26,7 @@ public class SiteService {
             timeoutInterval: 10.0 * 1000)
         urlRequest.HTTPMethod = "GET"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
         
         let task = urlSession.dataTaskWithRequest(urlRequest) { (data, response, error) -> Void in
             guard error == nil else {
@@ -59,8 +65,7 @@ public class SiteService {
     }
     
     public func fetchSites(completion:([Site]?, NSError?) -> Void) {
-        let baseURL = NSURL(string: "https://public-api.wordpress.com/rest/v1.1/")!
-        let url = NSURL(string: "me/sites", relativeToURL: baseURL)!
+        let url = NSURL(string: "me/sites", relativeToURL: wordPressComBaseURL())!
         
         let urlRequest = NSMutableURLRequest(
             URL: url,
@@ -68,6 +73,7 @@ public class SiteService {
             timeoutInterval: 10.0 * 1000)
         urlRequest.HTTPMethod = "GET"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
         
         let task = urlSession.dataTaskWithRequest(urlRequest) { (data, response, error) -> Void in
             guard error == nil else {
