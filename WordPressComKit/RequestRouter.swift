@@ -15,15 +15,15 @@ enum RequestRouter: URLRequestConvertible {
         let result: (path: String, method: Alamofire.Method, parameters: [String: AnyObject]) = {
             switch self {
             case .Me():
-                return ("/me", .GET, [String: AnyObject]())
+                return ("me", .GET, [String: AnyObject]())
             case .Post(let postID, let siteID):
-                return ("/sites/\(siteID)/posts/\(postID)", .GET, [String: AnyObject]())
+                return ("sites/\(siteID)/posts/\(postID)", .GET, [String: AnyObject]())
             case .PostNew(let siteID, let title, let body):
-                return ("/sites/\(siteID)/posts/new", .POST, ["title": title, "content": body])
+                return ("sites/\(siteID)/posts/new", .POST, ["title": title, "content": body])
             case .Site(let siteID):
-                return ("/sites/\(siteID)", .GET, [String: AnyObject]())
+                return ("sites/\(siteID)", .GET, [String: AnyObject]())
             case .Sites():
-                return ("/me/sites", .GET, [String: AnyObject]())
+                return ("me/sites", .GET, [String: AnyObject]())
             }
         }()
         

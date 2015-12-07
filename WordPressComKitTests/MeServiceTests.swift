@@ -19,7 +19,7 @@ class MeServiceTests: XCTestCase {
     }
     
     func testFetchMe() {
-        stub(isHost("public-api.wordpress.com")) { _ in
+        stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me")) { _ in
             let stubPath = OHPathForFile("me.json", self.dynamicType)
             return fixture(stubPath!, headers: ["Content-Type": "application/json"])
         }
@@ -36,7 +36,7 @@ class MeServiceTests: XCTestCase {
     }
     
     func testFetchMe2() {
-        stub(isHost("public-api.wordpress.com")) { _ in
+        stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me")) { _ in
             let stubPath = OHPathForFile("me-2.json", self.dynamicType)
             return fixture(stubPath!, headers: ["Content-Type": "application/json"])
         }

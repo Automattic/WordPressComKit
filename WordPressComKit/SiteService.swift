@@ -1,4 +1,5 @@
 import Foundation
+import Alamofire
 
 public class SiteService {
     private var bearerToken: String
