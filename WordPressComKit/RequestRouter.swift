@@ -1,9 +1,10 @@
 import Foundation
 import Alamofire
 
-enum RequestRouter: URLRequestConvertible {
+public enum RequestRouter: URLRequestConvertible {
     static let baseURLString = "https://public-api.wordpress.com/rest/v1.1/"
-    static var bearerToken = ""
+    // FIXME: This needs to go somewhere better
+    public static var bearerToken = ""
 
     case Me()
     case Post(postID: Int, siteID: Int)
@@ -11,7 +12,7 @@ enum RequestRouter: URLRequestConvertible {
     case Site(siteID: Int)
     case Sites()
     
-    var URLRequest: NSMutableURLRequest {
+    public var URLRequest: NSMutableURLRequest {
         let result: (path: String, method: Alamofire.Method, parameters: [String: AnyObject]) = {
             switch self {
             case .Me():
@@ -28,11 +29,11 @@ enum RequestRouter: URLRequestConvertible {
         }()
         
         let URL = NSURL(string: RequestRouter.baseURLString)!
-        let URLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path))
-        URLRequest.HTTPMethod = result.method.rawValue
-        URLRequest.addValue("Bearer \(RequestRouter.bearerToken)", forHTTPHeaderField: "Authentication")
+        let request = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path))
+        request.HTTPMethod = result.method.rawValue
+        request.addValue("Bearer \(RequestRouter.bearerToken)", forHTTPHeaderField: "Authorization")
         let encoding = result.method == .POST ? Alamofire.ParameterEncoding.JSON : Alamofire.ParameterEncoding.URL
         
-        return encoding.encode(URLRequest, parameters: result.parameters).0
+        return encoding.encode(request, parameters: result.parameters).0
     }
 }

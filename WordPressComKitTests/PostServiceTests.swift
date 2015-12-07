@@ -18,8 +18,8 @@ class PostServiceTests: XCTestCase {
         OHHTTPStubs.removeAllStubs()
     }
     
-    func testFetchSite() {
-        stub(isHost("public-api.wordpress.com")) { _ in
+    func testFetchPost() {
+        stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/sites/57773116/posts/57")) { _ in
             let stubPath = OHPathForFile("post.json", self.dynamicType)
             return fixture(stubPath!, headers: ["Content-Type": "application/json"])
         }
@@ -49,7 +49,7 @@ class PostServiceTests: XCTestCase {
     }
     
     func testCreatePost() {
-        stub(isHost("public-api.wordpress.com")) { _ in
+        stub(isMethodPOST() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/sites/57773116/posts/new")) { _ in
             let stubPath = OHPathForFile("post-new.json", self.dynamicType)
             return fixture(stubPath!, headers: ["Content-Type": "application/json"])
         }
