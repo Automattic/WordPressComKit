@@ -1,28 +1,29 @@
 import XCTest
+import OHHTTPStubs
 import WordPressComKit
 
 class MeServiceTests: XCTestCase {
-    var mockURLSession: MockNSURLSession!
     var subject: MeService!
     
     override func setUp() {
         super.setUp()
         
-        mockURLSession = MockNSURLSession()
-        subject = MeService(urlSession: mockURLSession)
+        subject = MeService()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         
         subject = nil
+        OHHTTPStubs.removeAllStubs()
     }
     
     func testFetchMe() {
-        let jsonData = readFile("me")
-        let urlResponse = NSHTTPURLResponse(URL: NSURL(string: "https://public-api.wordpress.com/rest/v1.1/me")!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
-        MockNSURLSession.mockResponse = (jsonData, urlResponse: urlResponse, error: nil)
+        stub(isHost("public-api.wordpress.com")) { _ in
+            let stubPath = OHPathForFile("me.json", self.dynamicType)
+            return fixture(stubPath!, headers: ["Content-Type": "application/json"])
+        }
+
         let expectation = self.expectationWithDescription("FetchMe")
         
         subject.fetchMe { me, error -> Void in
@@ -35,9 +36,11 @@ class MeServiceTests: XCTestCase {
     }
     
     func testFetchMe2() {
-        let jsonData = readFile("me-2")
-        let urlResponse = NSHTTPURLResponse(URL: NSURL(string: "https://public-api.wordpress.com/rest/v1.1/me")!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
-        MockNSURLSession.mockResponse = (jsonData, urlResponse: urlResponse, error: nil)
+        stub(isHost("public-api.wordpress.com")) { _ in
+            let stubPath = OHPathForFile("me-2.json", self.dynamicType)
+            return fixture(stubPath!, headers: ["Content-Type": "application/json"])
+        }
+        
         let expectation = self.expectationWithDescription("FetchMe")
         
         subject.fetchMe { me, error -> Void in

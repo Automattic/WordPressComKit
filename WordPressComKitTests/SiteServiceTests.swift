@@ -1,28 +1,29 @@
 import XCTest
+import OHHTTPStubs
 import WordPressComKit
 
 class SiteServiceTests: XCTestCase {
-    var mockURLSession: MockNSURLSession!
     var subject: SiteService!
     
     override func setUp() {
         super.setUp()
         
-        mockURLSession = MockNSURLSession()
-        subject = SiteService(urlSession: mockURLSession)
+        subject = SiteService()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         
         subject = nil
+        OHHTTPStubs.removeAllStubs()
     }
     
     func testFetchSite() {
-        let jsonData = readFile("site")
-        let urlResponse = NSHTTPURLResponse(URL: NSURL(string: "https://public-api.wordpress.com/rest/v1.1/site/1234")!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
-        MockNSURLSession.mockResponse = (jsonData, urlResponse: urlResponse, error: nil)
+        stub(isHost("public-api.wordpress.com")) { _ in
+            let stubPath = OHPathForFile("site.json", self.dynamicType)
+            return fixture(stubPath!, headers: ["Content-Type": "application/json"])
+        }
+        
         let expectation = self.expectationWithDescription("FetchMe")
         
         subject.fetchSite(1234) { site, error -> Void in
@@ -48,9 +49,11 @@ class SiteServiceTests: XCTestCase {
     }
     
     func testFetchSites() {
-        let jsonData = readFile("sites")
-        let urlResponse = NSHTTPURLResponse(URL: NSURL(string: "https://public-api.wordpress.com/rest/v1.1/me/sites")!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
-        MockNSURLSession.mockResponse = (jsonData, urlResponse: urlResponse, error: nil)
+        stub(isHost("public-api.wordpress.com")) { _ in
+            let stubPath = OHPathForFile("sites.json", self.dynamicType)
+            return fixture(stubPath!, headers: ["Content-Type": "application/json"])
+        }
+        
         let expectation = self.expectationWithDescription("FetchMe")
         
         subject.fetchSites { sites, error -> Void in
