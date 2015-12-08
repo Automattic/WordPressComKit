@@ -35,29 +35,14 @@ public class SiteService {
                 return
             }
             
-            var json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
+            let json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
             
             guard json != nil else {
                 completion(nil, NSError(domain: "com.automattic.WordPressKit", code: -1000, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Unexpected remote error preventing JSON parsing", comment: "JSON parsing error string")]))
                 return
             }
             
-            let site = Site()
-            site.ID = json!["ID"] as! Int
-            site.name = json!["name"] as? String
-            site.description = json!["description"] as? String
-            site.URL = NSURL(string: json!["URL"] as! String)
-            site.jetpack = json!["jetpack"] as! Bool
-            site.postCount = json!["post_count"] as! Int
-            site.subscribersCount = json!["subscribers_count"] as! Int
-            site.language = json!["lang"] as! String
-            site.visible = json!["visible"] as! Bool
-            site.isPrivate = json!["is_private"] as! Bool
-            
-            let options = json!["options"] as? [String: AnyObject]
-            if let timeZoneName = options?["timezone"] as? String {
-                site.timeZone = NSTimeZone(name: timeZoneName)
-            }
+            let site = self.mapJSONToSite(json!)
             
             completion(site, nil)
         }
@@ -82,7 +67,7 @@ public class SiteService {
                 return
             }
             
-            var json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
+            let json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
             
             guard json != nil else {
                 completion(nil, NSError(domain: "com.automattic.WordPressKit", code: -1000, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Unexpected remote error preventing JSON parsing", comment: "JSON parsing error string")]))
@@ -91,30 +76,32 @@ public class SiteService {
             
             let sitesDictionary = json!["sites"] as! [[String: AnyObject]]
 
-            let sites = sitesDictionary.map({ (siteDictionary) -> Site in
-                let site = Site()
-                site.ID = siteDictionary["ID"] as! Int
-                site.name = siteDictionary["name"] as? String
-                site.description = siteDictionary["description"] as? String
-                site.URL = NSURL(string: siteDictionary["URL"] as! String)
-                site.jetpack = siteDictionary["jetpack"] as! Bool
-                site.postCount = siteDictionary["post_count"] as! Int
-                site.subscribersCount = siteDictionary["subscribers_count"] as! Int
-                site.language = siteDictionary["lang"] as! String
-                site.visible = siteDictionary["visible"] as! Bool
-                site.isPrivate = siteDictionary["is_private"] as! Bool
-                
-                let options = siteDictionary["options"] as? [String: AnyObject]
-                if let timeZoneName = options?["timezone"] as? String {
-                    site.timeZone = NSTimeZone(name: timeZoneName)
-                }
-
-                return site
-            })
+            let sites = sitesDictionary.map(self.mapJSONToSite)
             
             completion(sites, nil)
         }
         
         task.resume()
+    }
+    
+    func mapJSONToSite(json: [String: AnyObject]) -> Site {
+        let site = Site()
+        site.ID = json["ID"] as! Int
+        site.name = json["name"] as? String
+        site.description = json["description"] as? String
+        site.URL = NSURL(string: json["URL"] as! String)
+        site.jetpack = json["jetpack"] as! Bool
+        site.postCount = json["post_count"] as! Int
+        site.subscribersCount = json["subscribers_count"] as! Int
+        site.language = json["lang"] as! String
+        site.visible = json["visible"] as! Bool
+        site.isPrivate = json["is_private"] as! Bool
+        
+        let options = json["options"] as? [String: AnyObject]
+        if let timeZoneName = options?["timezone"] as? String {
+            site.timeZone = NSTimeZone(name: timeZoneName)
+        }
+        
+        return site
     }
 }
