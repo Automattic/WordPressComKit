@@ -5,6 +5,7 @@ public class Site {
     public var name: String?
     public var description: String?
     public var URL: NSURL!
+    public var icon: String?
     public var jetpack = false
     public var postCount = 0
     public var subscribersCount = 0

@@ -86,10 +86,14 @@ public class SiteService {
     
     func mapJSONToSite(json: [String: AnyObject]) -> Site {
         let site = Site()
+        
+        let rawIcon = json["icon"] as? NSDictionary
+        
         site.ID = json["ID"] as! Int
         site.name = json["name"] as? String
         site.description = json["description"] as? String
         site.URL = NSURL(string: json["URL"] as! String)
+        site.icon = rawIcon?["img"] as? String
         site.jetpack = json["jetpack"] as! Bool
         site.postCount = json["post_count"] as! Int
         site.subscribersCount = json["subscribers_count"] as! Int

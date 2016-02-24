@@ -36,6 +36,7 @@ class SiteServiceTests: XCTestCase {
             XCTAssertEqual("The Dangling Pointer", site!.name)
             XCTAssertEqual("Sh*t my brain says and forgets about", site!.description)
             XCTAssertEqual("http://astralbodi.es", site!.URL.absoluteString)
+            XCTAssertEqual("https://secure.gravatar.com/blavatar/1de1e43955ffc6998dbd037cb6fb0440", site!.icon)
             XCTAssertEqual(false, site!.jetpack)
             XCTAssertEqual(179, site!.postCount)
             XCTAssertEqual(233, site!.subscribersCount)
