@@ -2,10 +2,14 @@ import Foundation
 import Alamofire
 
 public class PostService {
-    public init() {}
+    public init() { }
+    
+    public init(configuration: NSURLSessionConfiguration) {
+        manager = Alamofire.Manager(configuration: configuration)
+    }
     
     public func fetchPost(postID: Int, siteID: Int, completion: (post: Post?, error: NSError?) -> Void) {
-        Alamofire
+        manager
             .request(RequestRouter.Post(postID: postID, siteID: siteID))
             .validate()
             .responseJSON { response in
@@ -23,7 +27,7 @@ public class PostService {
     }
     
     public func createPost(siteID siteID: Int, title: String, body: String, completion: (post: Post?, error: NSError?) -> Void) {
-        Alamofire
+        manager
             .request(RequestRouter.PostNew(siteID: siteID, title: title, body: body))
             .validate()
             .responseJSON { response in
@@ -61,4 +65,6 @@ public class PostService {
         
         return post
     }
+    
+    private var manager = Alamofire.Manager.sharedInstance
 }
