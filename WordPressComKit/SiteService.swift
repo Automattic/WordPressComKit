@@ -2,21 +2,7 @@ import Foundation
 import Alamofire
 
 public class SiteService {
-    private var bearerToken: String
-    private var urlSession: NSURLSession
-    
-    convenience public init() {
-        self.init(bearerToken: "", urlSession: NSURLSession.sharedSession())
-    }
-    
-    convenience public init(urlSession: NSURLSession) {
-        self.init(bearerToken: "", urlSession: urlSession)
-    }
-    
-    public init(bearerToken: String, urlSession: NSURLSession) {
-        self.bearerToken = bearerToken
-        self.urlSession = urlSession
-    }
+    public init() {}
     
     public func fetchSite(siteID: Int, completion: (Site?, NSError?) -> Void) {
         Alamofire
