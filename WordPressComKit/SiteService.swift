@@ -19,69 +19,39 @@ public class SiteService {
     }
     
     public func fetchSite(siteID: Int, completion: (Site?, NSError?) -> Void) {
-        let url = NSURL(string: "sites/\(siteID)", relativeToURL: wordPressComBaseURL())!
-        
-        let urlRequest = NSMutableURLRequest(
-            URL: url,
-            cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData,
-            timeoutInterval: 10.0 * 1000)
-        urlRequest.HTTPMethod = "GET"
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        
-        let task = urlSession.dataTaskWithRequest(urlRequest) { (data, response, error) -> Void in
-            guard error == nil else {
-                completion(nil, error)
-                return
-            }
-            
-            let json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
-            
-            guard json != nil else {
-                completion(nil, NSError(domain: "com.automattic.WordPressKit", code: -1000, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Unexpected remote error preventing JSON parsing", comment: "JSON parsing error string")]))
-                return
-            }
-            
-            let site = self.mapJSONToSite(json!)
-            
-            completion(site, nil)
+        Alamofire
+            .request(RequestRouter.Site(siteID: siteID))
+            .validate()
+            .responseJSON { response in
+                guard response.result.isSuccess else {
+                    completion(nil, response.result.error)
+                    return
+                }
+                
+                let json = response.result.value as? [String: AnyObject]
+                let site = self.mapJSONToSite(json!)
+                
+                completion(site, nil)
         }
-        
-        task.resume()
     }
     
-    public func fetchSites(completion:([Site]?, NSError?) -> Void) {
-        let url = NSURL(string: "me/sites", relativeToURL: wordPressComBaseURL())!
-        
-        let urlRequest = NSMutableURLRequest(
-            URL: url,
-            cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData,
-            timeoutInterval: 10.0 * 1000)
-        urlRequest.HTTPMethod = "GET"
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        urlRequest.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
-        
-        let task = urlSession.dataTaskWithRequest(urlRequest) { (data, response, error) -> Void in
-            guard error == nil else {
-                completion(nil, error)
-                return
-            }
-            
-            let json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
-            
-            guard json != nil else {
-                completion(nil, NSError(domain: "com.automattic.WordPressKit", code: -1000, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Unexpected remote error preventing JSON parsing", comment: "JSON parsing error string")]))
-                return
-            }
-            
-            let sitesDictionary = json!["sites"] as! [[String: AnyObject]]
-
-            let sites = sitesDictionary.map(self.mapJSONToSite)
-            
-            completion(sites, nil)
+    public func fetchSites(showActiveOnly: Bool = true, completion:([Site]?, NSError?) -> Void) {
+        Alamofire
+            .request(RequestRouter.Sites(showActiveOnly: showActiveOnly))
+            .validate()
+            .responseJSON { response in
+                guard response.result.isSuccess else {
+                    completion(nil, response.result.error)
+                    return
+                }
+                
+                let json = response.result.value as? [String: AnyObject]
+                let sitesDictionary = json!["sites"] as! [[String: AnyObject]]
+                
+                let sites = sitesDictionary.map(self.mapJSONToSite)
+                
+                completion(sites, nil)
         }
-        
-        task.resume()
     }
     
     func mapJSONToSite(json: [String: AnyObject]) -> Site {

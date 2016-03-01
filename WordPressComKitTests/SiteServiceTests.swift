@@ -49,6 +49,24 @@ class SiteServiceTests: XCTestCase {
         self.waitForExpectationsWithTimeout(2.0, handler: nil)
     }
     
+    func testFetchSiteHTTP500Error() {
+        stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/sites/1234")) { _ in
+            let stubPath = OHPathForFile("site.json", self.dynamicType)
+            return fixture(stubPath!, status: 500, headers: ["Content-Type": "application/json"])
+        }
+        
+        let expectation = self.expectationWithDescription("FetchMe")
+        
+        subject.fetchSite(1234) { site, error -> Void in
+            expectation.fulfill()
+            
+            XCTAssertNil(site)
+            XCTAssertNotNil(error)
+        }
+        
+        self.waitForExpectationsWithTimeout(2.0, handler: nil)
+    }
+    
     func testFetchSites() {
         stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me/sites")) { _ in
             let stubPath = OHPathForFile("sites.json", self.dynamicType)
@@ -68,5 +86,25 @@ class SiteServiceTests: XCTestCase {
         
         self.waitForExpectationsWithTimeout(2.0, handler: nil)
     }
+    
+    func testFetchSitesHTTP500Error() {
+        stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me/sites")) { _ in
+            let stubPath = OHPathForFile("sites.json", self.dynamicType)
+            return fixture(stubPath!, status: 500, headers: ["Content-Type": "application/json"])
+        }
+        
+        let expectation = self.expectationWithDescription("FetchMe")
+        
+        subject.fetchSites { sites, error -> Void in
+            expectation.fulfill()
+            
+            XCTAssertNil(sites)
+            XCTAssertNotNil(error)
+        }
+        
+        self.waitForExpectationsWithTimeout(2.0, handler: nil)
+    }
+    
+
     
 }

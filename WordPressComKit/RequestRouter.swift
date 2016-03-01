@@ -10,7 +10,7 @@ public enum RequestRouter: URLRequestConvertible {
     case Post(postID: Int, siteID: Int)
     case PostNew(siteID: Int, title: String, body: String)
     case Site(siteID: Int)
-    case Sites()
+    case Sites(showActiveOnly: Bool)
     
     public var URLRequest: NSMutableURLRequest {
         let result: (path: String, method: Alamofire.Method, parameters: [String: AnyObject]) = {
@@ -23,8 +23,8 @@ public enum RequestRouter: URLRequestConvertible {
                 return ("sites/\(siteID)/posts/new", .POST, ["title": title, "content": body])
             case .Site(let siteID):
                 return ("sites/\(siteID)", .GET, [String: AnyObject]())
-            case .Sites():
-                return ("me/sites", .GET, [String: AnyObject]())
+            case .Sites(let showActiveOnly):
+                return ("me/sites", .GET, ["site_visibility" : showActiveOnly ? "visible" : "all"])
             }
         }()
         
