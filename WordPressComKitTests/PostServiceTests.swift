@@ -55,7 +55,7 @@ class PostServiceTests: XCTestCase {
         }
         let expectation = self.expectationWithDescription("CreateMe")
         
-        subject.createPost(siteID: 57773116, title: "Test Post", body: "This is the body.") { post, error in
+        subject.createPost(siteID: 57773116, status: "publish", title: "Test Post", body: "This is the body.") { post, error in
             expectation.fulfill()
             
             XCTAssertNotNil(post)

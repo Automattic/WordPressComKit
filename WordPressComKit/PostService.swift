@@ -26,9 +26,9 @@ public class PostService {
         }
     }
     
-    public func createPost(siteID siteID: Int, title: String, body: String, completion: (post: Post?, error: NSError?) -> Void) {
+    public func createPost(siteID siteID: Int, status: String, title: String, body: String, completion: (post: Post?, error: NSError?) -> Void) {
         manager
-            .request(RequestRouter.PostNew(siteID: siteID, title: title, body: body))
+            .request(RequestRouter.PostNew(siteID: siteID, status: status, title: title, body: body))
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {

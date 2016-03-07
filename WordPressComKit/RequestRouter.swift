@@ -8,7 +8,7 @@ public enum RequestRouter: URLRequestConvertible {
 
     case Me()
     case Post(postID: Int, siteID: Int)
-    case PostNew(siteID: Int, title: String, body: String)
+    case PostNew(siteID: Int, status: String, title: String, body: String)
     case Site(siteID: Int)
     case Sites(showActiveOnly: Bool)
     
@@ -19,8 +19,8 @@ public enum RequestRouter: URLRequestConvertible {
                 return ("me", .GET, [String: AnyObject]())
             case .Post(let postID, let siteID):
                 return ("sites/\(siteID)/posts/\(postID)", .GET, [String: AnyObject]())
-            case .PostNew(let siteID, let title, let body):
-                return ("sites/\(siteID)/posts/new", .POST, ["title": title, "content": body])
+            case .PostNew(let siteID, let status, let title, let body):
+                return ("sites/\(siteID)/posts/new", .POST, ["title": title, "content": body, "status": status])
             case .Site(let siteID):
                 return ("sites/\(siteID)", .GET, [String: AnyObject]())
             case .Sites(let showActiveOnly):
