@@ -7,7 +7,7 @@ public class Me {
     var email: String?
     var primaryBlogID: Int?
     var primaryBlogURL: NSURL?
-    var language = "en"
+    var language: String?
     var avatarURL: NSURL?
     var profileURL: NSURL?
     var verified = true

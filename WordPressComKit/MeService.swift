@@ -24,7 +24,7 @@ public class MeService {
                 if let primaryBlogURLPath = json!["primary_blog_url"] as? String {
                     me.primaryBlogURL = NSURL(string: primaryBlogURLPath)
                 }
-                me.language = json!["language"] as! String
+                me.language = json!["language"] as? String
                 if let avatarURLPath = json!["avatar_URL"] as? String {
                     me.avatarURL = NSURL(string: avatarURLPath)
                 }
