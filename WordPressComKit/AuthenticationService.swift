@@ -1,11 +1,12 @@
 import Foundation
 
-public class AuthenticationService {
-    public func authorizeClient() {
+// Unimplemented
+internal class AuthenticationService {
+    func authorizeClient() {
         
     }
     
-    public func fetchOAuthToken() {
+    func fetchOAuthToken() {
         
     }
 }
