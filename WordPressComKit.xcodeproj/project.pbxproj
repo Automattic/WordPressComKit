@@ -32,6 +32,8 @@
 		939555791C11E433001BC911 /* WordPressComAPIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939555781C11E433001BC911 /* WordPressComAPIHelpers.swift */; };
 		9395557B1C11FC87001BC911 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395557A1C11FC87001BC911 /* RequestRouter.swift */; };
 		93FD56E21CD92DE8002EC8B2 /* StatsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD56E11CD92DE8002EC8B2 /* StatsSummary.swift */; };
+		93FD56E41CDBBF24002EC8B2 /* StatsVisits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD56E31CDBBF24002EC8B2 /* StatsVisits.swift */; };
+		93FD56E61CDBC184002EC8B2 /* StatsLatestPostSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD56E51CDBC184002EC8B2 /* StatsLatestPostSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		939555781C11E433001BC911 /* WordPressComAPIHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPressComAPIHelpers.swift; sourceTree = "<group>"; };
 		9395557A1C11FC87001BC911 /* RequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		93FD56E11CD92DE8002EC8B2 /* StatsSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsSummary.swift; sourceTree = "<group>"; };
+		93FD56E31CDBBF24002EC8B2 /* StatsVisits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsVisits.swift; sourceTree = "<group>"; };
+		93FD56E51CDBC184002EC8B2 /* StatsLatestPostSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsLatestPostSummary.swift; sourceTree = "<group>"; };
 		97E9108BB56AC815991874DD /* Pods-WordPressComKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordPressComKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordPressComKitTests/Pods-WordPressComKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABB7AC137FB1A92F15D78DC2 /* Pods_WordPressComKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordPressComKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC104F77EAD7B90E1CAEF93D /* Pods-WordPressComKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordPressComKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordPressComKit/Pods-WordPressComKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				93FD56E11CD92DE8002EC8B2 /* StatsSummary.swift */,
+				93FD56E31CDBBF24002EC8B2 /* StatsVisits.swift */,
+				93FD56E51CDBC184002EC8B2 /* StatsLatestPostSummary.swift */,
 			);
 			name = Stats;
 			sourceTree = "<group>";
@@ -396,10 +402,12 @@
 				93340C741C064BF7004CCB0C /* Site.swift in Sources */,
 				939555791C11E433001BC911 /* WordPressComAPIHelpers.swift in Sources */,
 				93340C781C064F8B004CCB0C /* SiteService.swift in Sources */,
+				93FD56E41CDBBF24002EC8B2 /* StatsVisits.swift in Sources */,
 				93340C731C064BF7004CCB0C /* Me.swift in Sources */,
 				93340C761C064F69004CCB0C /* PostService.swift in Sources */,
 				9395557B1C11FC87001BC911 /* RequestRouter.swift in Sources */,
 				9395556F1C08DD04001BC911 /* Post.swift in Sources */,
+				93FD56E61CDBC184002EC8B2 /* StatsLatestPostSummary.swift in Sources */,
 				939555631C08B73C001BC911 /* DateHelpers.swift in Sources */,
 				939555771C08F9E9001BC911 /* AuthenticationService.swift in Sources */,
 			);
