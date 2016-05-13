@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6678539ABE2EE64C132CF4F4 /* Pods_WPCKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7DBAB82B8A220970856316 /* Pods_WPCKitDemo.framework */; };
 		939555891C15FD89001BC911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939555881C15FD89001BC911 /* AppDelegate.swift */; };
 		9395558B1C15FD89001BC911 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395558A1C15FD89001BC911 /* ViewController.swift */; };
 		9395558E1C15FD89001BC911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9395558C1C15FD89001BC911 /* Main.storyboard */; };
 		939555901C15FD89001BC911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9395558F1C15FD89001BC911 /* Assets.xcassets */; };
 		939555931C15FD89001BC911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939555911C15FD89001BC911 /* LaunchScreen.storyboard */; };
+		C505E74DC689AF9EF5EEEC68 /* Pods_WPCKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1A1FF533513DB165F307B6 /* Pods_WPCKitDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A4F9BEBEC4917B2BB9080E5 /* Pods-WPCKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPCKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		1034CD886862D1ACD6AF1B3E /* Pods-WPCKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPCKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		6F1A1FF533513DB165F307B6 /* Pods_WPCKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WPCKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		939555851C15FD89001BC911 /* WPCKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPCKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		939555881C15FD89001BC911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9395558A1C15FD89001BC911 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,8 +25,7 @@
 		9395558F1C15FD89001BC911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		939555921C15FD89001BC911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		939555941C15FD89001BC911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B7DBAB82B8A220970856316 /* Pods_WPCKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WPCKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBBD950FABA5B8AEDA1C202A /* Pods-WPCKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPCKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		EC87CC9C776F2391B6A7E5DF /* Pods-WPCKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPCKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,28 +33,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6678539ABE2EE64C132CF4F4 /* Pods_WPCKitDemo.framework in Frameworks */,
+				C505E74DC689AF9EF5EEEC68 /* Pods_WPCKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		136BBCA13DC98CF1390843AE /* Pods */ = {
+		29C2D5565D3C87FD36CEF218 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3A4F9BEBEC4917B2BB9080E5 /* Pods-WPCKitDemo.debug.xcconfig */,
-				DBBD950FABA5B8AEDA1C202A /* Pods-WPCKitDemo.release.xcconfig */,
+				EC87CC9C776F2391B6A7E5DF /* Pods-WPCKitDemo.debug.xcconfig */,
+				1034CD886862D1ACD6AF1B3E /* Pods-WPCKitDemo.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		1BF5DAF8F483E8FBF2E8EDFB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9B7DBAB82B8A220970856316 /* Pods_WPCKitDemo.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9395557C1C15FD89001BC911 = {
@@ -62,8 +54,8 @@
 			children = (
 				939555871C15FD89001BC911 /* WPCKitDemo */,
 				939555861C15FD89001BC911 /* Products */,
-				136BBCA13DC98CF1390843AE /* Pods */,
-				1BF5DAF8F483E8FBF2E8EDFB /* Frameworks */,
+				29C2D5565D3C87FD36CEF218 /* Pods */,
+				AAB72F8AE62DC4FDBC18BBCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +80,14 @@
 			path = WPCKitDemo;
 			sourceTree = "<group>";
 		};
+		AAB72F8AE62DC4FDBC18BBCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F1A1FF533513DB165F307B6 /* Pods_WPCKitDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,12 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 939555971C15FD89001BC911 /* Build configuration list for PBXNativeTarget "WPCKitDemo" */;
 			buildPhases = (
-				B86BCAA34491FD3C8148DB2C /* Check Pods Manifest.lock */,
+				16A82E7CFAFFD417039D7204 /* 📦 Check Pods Manifest.lock */,
 				939555811C15FD89001BC911 /* Sources */,
 				939555821C15FD89001BC911 /* Frameworks */,
 				939555831C15FD89001BC911 /* Resources */,
-				8DBBEDD9C321CDD77778E895 /* Embed Pods Frameworks */,
-				67DD307768C34962FF3C7941 /* Copy Pods Resources */,
+				4089DF26ECE45749B42803DE /* 📦 Embed Pods Frameworks */,
+				D63A73D975661AE58A91772B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,29 +158,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		67DD307768C34962FF3C7941 /* Copy Pods Resources */ = {
+		16A82E7CFAFFD417039D7204 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8DBBEDD9C321CDD77778E895 /* Embed Pods Frameworks */ = {
+		4089DF26ECE45749B42803DE /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,19 +188,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B86BCAA34491FD3C8148DB2C /* Check Pods Manifest.lock */ = {
+		D63A73D975661AE58A91772B /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -322,7 +322,7 @@
 		};
 		939555981C15FD89001BC911 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A4F9BEBEC4917B2BB9080E5 /* Pods-WPCKitDemo.debug.xcconfig */;
+			baseConfigurationReference = EC87CC9C776F2391B6A7E5DF /* Pods-WPCKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WPCKitDemo/Info.plist;
@@ -334,7 +334,7 @@
 		};
 		939555991C15FD89001BC911 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBBD950FABA5B8AEDA1C202A /* Pods-WPCKitDemo.release.xcconfig */;
+			baseConfigurationReference = 1034CD886862D1ACD6AF1B3E /* Pods-WPCKitDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WPCKitDemo/Info.plist;
