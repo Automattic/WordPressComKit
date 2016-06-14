@@ -31,9 +31,19 @@ public class MediaService {
         }
     }
 
-    private func mapJSONToMedia(json: [String: AnyObject]) -> Media {
-// TODO: Implement Me
-        return Media()
+    private func mapJSONToMedia(json: [String: AnyObject]) -> Media? {
+        guard let rawMediaList = json["media"] as? [[String: AnyObject]],
+            let rawMedia = rawMediaList.first,
+            let mediaID = rawMedia["ID"] as? Int,
+            let mediaURL = rawMedia["URL"] as? String,
+            let width = rawMedia["width"] as? Int,
+            let height = rawMedia["height"] as? Int else
+        {
+            return nil
+        }
+
+        let size = CGSize(width: width, height: height)
+        return Media(mediaID: mediaID, remoteURL: mediaURL, size: size)
     }
 
     private func multipartRequest(attachmentURL: NSURL, name: String, siteID: Int, completion: ((request: Request?, error: ErrorType?) -> Void)) {
