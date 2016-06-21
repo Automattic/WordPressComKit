@@ -95,12 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 939555971C15FD89001BC911 /* Build configuration list for PBXNativeTarget "WPCKitDemo" */;
 			buildPhases = (
-				16A82E7CFAFFD417039D7204 /* 📦 Check Pods Manifest.lock */,
+				16A82E7CFAFFD417039D7204 /* [CP] Check Pods Manifest.lock */,
 				939555811C15FD89001BC911 /* Sources */,
 				939555821C15FD89001BC911 /* Frameworks */,
 				939555831C15FD89001BC911 /* Resources */,
-				4089DF26ECE45749B42803DE /* 📦 Embed Pods Frameworks */,
-				D63A73D975661AE58A91772B /* 📦 Copy Pods Resources */,
+				4089DF26ECE45749B42803DE /* [CP] Embed Pods Frameworks */,
+				D63A73D975661AE58A91772B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,14 +158,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		16A82E7CFAFFD417039D7204 /* 📦 Check Pods Manifest.lock */ = {
+		16A82E7CFAFFD417039D7204 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,14 +173,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4089DF26ECE45749B42803DE /* 📦 Embed Pods Frameworks */ = {
+		4089DF26ECE45749B42803DE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,14 +188,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPCKitDemo/Pods-WPCKitDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D63A73D975661AE58A91772B /* 📦 Copy Pods Resources */ = {
+		D63A73D975661AE58A91772B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
