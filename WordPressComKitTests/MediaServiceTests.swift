@@ -20,6 +20,8 @@ class MediaServiceTests: XCTestCase {
 
     func testCreateMedia() {
         let siteID = 123
+        let mediaSize = CGSize(width: 3000, height: 2002)
+        let remoteURL = "https://lanteanartest.files.wordpress.com/2016/06/img_00035.jpg"
 
         stub(isMethodPOST() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/sites/\(siteID)/media/new")) { _ in
             let stubPath = OHPathForFile("media.json", self.dynamicType)
@@ -33,7 +35,11 @@ class MediaServiceTests: XCTestCase {
 
         subject.createMedia(imageURL!, siteID: siteID) { (media, error) in
             XCTAssertNotNil(media)
+            XCTAssertEqual(media?.mediaID, siteID)
+            XCTAssertEqual(media?.remoteURL, remoteURL)
+            XCTAssertEqual(media?.size, mediaSize)
             XCTAssertNil(error)
+
             expectation.fulfill()
         }
 
