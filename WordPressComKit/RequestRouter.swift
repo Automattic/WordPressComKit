@@ -7,7 +7,7 @@ public enum RequestRouter: URLRequestConvertible {
     public static var bearerToken = ""
 
     case Me()
-    case Media(siteID: Int)
+    case MediaNew(siteID: Int)
     case Post(postID: Int, siteID: Int)
     case PostNew(siteID: Int, status: String, title: String, body: String)
     case Site(siteID: Int)
@@ -18,7 +18,7 @@ public enum RequestRouter: URLRequestConvertible {
             switch self {
             case .Me():
                 return ("me", .GET, [String: AnyObject]())
-            case .Media(let siteID):
+            case .MediaNew(let siteID):
                 return ("sites/\(siteID)/media/new", .POST, [String: AnyObject]())
             case .Post(let postID, let siteID):
                 return ("sites/\(siteID)/posts/\(postID)", .GET, [String: AnyObject]())

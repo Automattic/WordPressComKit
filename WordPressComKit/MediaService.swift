@@ -47,7 +47,7 @@ public class MediaService {
     }
 
     private func multipartRequest(attachmentURL: NSURL, name: String, siteID: Int, completion: ((request: Request?, error: ErrorType?) -> Void)) {
-        let unencodedRequest = RequestRouter.Media(siteID: siteID)
+        let unencodedRequest = RequestRouter.MediaNew(siteID: siteID)
 
         manager.upload(unencodedRequest, multipartFormData: { multipartFormData in
             multipartFormData.appendBodyPart(fileURL: attachmentURL, name: name)
