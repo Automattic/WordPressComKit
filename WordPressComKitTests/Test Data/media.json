@@ -1,0 +1,43 @@
+{
+    "media": [{
+              "ID": 123,
+              "URL": "https:\/\/lanteanartest.files.wordpress.com\/2016\/06\/img_00035.jpg",
+              "guid": "http:\/\/lanteanartest.files.wordpress.com\/2016\/06\/img_00035.jpg",
+              "date": "2016-06-15T18:41:18+00:00",
+              "post_ID": 0,
+              "author_ID": 45413599,
+              "file": "img_00035.jpg",
+              "mime_type": "image\/jpeg",
+              "extension": "jpg",
+              "caption": "",
+              "description": "",
+              "alt": "",
+              "thumbnails": {
+              "thumbnail": "https:\/\/lanteanartest.files.wordpress.com\/2016\/06\/img_00035.jpg?w=150",
+              "medium": "https:\/\/lanteanartest.files.wordpress.com\/2016\/06\/img_00035.jpg?w=300",
+              "large": "https:\/\/lanteanartest.files.wordpress.com\/2016\/06\/img_00035.jpg?w=1024"
+              },
+              "height": 2002,
+              "width": 3000,
+              "exif": {
+              "aperture": "10",
+              "caption": "",
+              "created_timestamp": "1344365531",
+              "focal_length": "24",
+              "iso": "200",
+              "shutter_speed": "4",
+              "title": "Godafoss",
+              "orientation": "1",
+              "keywords": [],
+              "latitude": 65.682894444444,
+              "longitude": -17.548927777778
+              },
+              "meta": {
+              "links": {
+              "self": "https:\/\/public-api.wordpress.com\/rest\/v1.1\/sites\/66291871\/media\/123",
+              "help": "https:\/\/public-api.wordpress.com\/rest\/v1.1\/sites\/66291871\/media\/123\/help",
+              "site": "https:\/\/public-api.wordpress.com\/rest\/v1.1\/sites\/66291871"
+              }
+              }
+              }]
+}
