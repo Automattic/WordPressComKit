@@ -9,8 +9,8 @@ public class MediaService {
         manager = Alamofire.Manager(configuration: configuration)
     }
 
-    public func createMedia(attachedImagePNGData: NSData, siteID: Int, completion: ((media: Media?, error: ErrorType?) -> Void)) {
-        let request = RequestRouter.MediaNew(siteID: siteID, attachedImagePNGData: attachedImagePNGData)
+    public func createMedia(attachedImageJPEGData: NSData, siteID: Int, completion: ((media: Media?, error: ErrorType?) -> Void)) {
+        let request = RequestRouter.MediaNew(siteID: siteID, attachedImageJPEGData: attachedImageJPEGData)
         manager.encodedMultipartRequest(request) { (request, error) in
             guard let request = request else {
                 completion(media: nil, error: error)

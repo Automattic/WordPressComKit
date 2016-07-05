@@ -7,9 +7,9 @@ public enum RequestRouter: URLRequestConvertible {
     public static var bearerToken = ""
 
     case Me()
-    case MediaNew(siteID: Int, attachedImagePNGData: NSData)
+    case MediaNew(siteID: Int, attachedImageJPEGData: NSData)
     case Post(postID: Int, siteID: Int)
-    case PostNew(siteID: Int, status: String, title: String, body: String, attachedImagePNGData: NSData?)
+    case PostNew(siteID: Int, status: String, title: String, body: String, attachedImageJPEGData: NSData?)
     case Site(siteID: Int)
     case Sites(showActiveOnly: Bool)
     
@@ -42,11 +42,11 @@ public enum RequestRouter: URLRequestConvertible {
 
     public func loadMultipartFields(multipartFormData: MultipartFormData) {
         switch self {
-        case .MediaNew(_, let attachedImageData):
-            multipartFormData.appendBodyPart(data: attachedImageData, name: "media[]", fileName: MediaSettings.filename, mimeType: MediaSettings.mimeType)
-        case .PostNew(_, let status, let title, let body, let attachedImageData):
-            if let attachedImageData = attachedImageData {
-                multipartFormData.appendBodyPart(data: attachedImageData, name: "media[0]", fileName: MediaSettings.filename, mimeType: MediaSettings.mimeType)
+        case .MediaNew(_, let attachedImageJPEGData):
+            multipartFormData.appendBodyPart(data: attachedImageJPEGData, name: "media[]", fileName: MediaSettings.filename, mimeType: MediaSettings.mimeType)
+        case .PostNew(_, let status, let title, let body, let attachedImageJPEGData):
+            if let attachedImageData = attachedImageJPEGData {
+                multipartFormData.appendBodyPart(data: attachedImageData, name: "media[]", fileName: MediaSettings.filename, mimeType: MediaSettings.mimeType)
             }
             if let body = body.dataUsingEncoding(NSUTF8StringEncoding) {
                 multipartFormData.appendBodyPart(data: body, name: "content")
@@ -64,7 +64,7 @@ public enum RequestRouter: URLRequestConvertible {
 
 
     private enum MediaSettings {
-        static let filename = "image.png"
-        static let mimeType = "image/png"
+        static let filename = "image.jpg"
+        static let mimeType = "image/jpeg"
     }
 }
