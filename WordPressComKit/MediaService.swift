@@ -9,32 +9,9 @@ public class MediaService {
         manager = Alamofire.Manager(configuration: configuration)
     }
 
-
-    public func createMedia(rawImage: NSData, filename: String, mimeType: String, siteID: Int, completion: ((media: Media?, error: ErrorType?) -> Void)) {
-
-        multipartRequest(rawImage, name: mediaFieldName, fileName: filename, mimeType: mimeType, siteID: siteID) { (request, error) in
-            guard let request = request else {
-                completion(media: nil, error: error)
-                return
-            }
-
-            request.responseJSON { response in
-                guard response.result.isSuccess else {
-                    completion(media: nil, error: response.result.error)
-                    return
-                }
-
-                let json = response.result.value as! [String: AnyObject]
-                let media = self.mapJSONToMedia(json)
-
-                completion(media: media, error: nil)
-            }
-        }
-    }
-
-    public func createMedia(imageURL: NSURL, siteID: Int, completion: ((media: Media?, error: ErrorType?) -> Void)) {
-
-        multipartRequest(imageURL, name: mediaFieldName, siteID: siteID) { (request, error) in
+    public func createMedia(attachedImagePNGData: NSData, siteID: Int, completion: ((media: Media?, error: ErrorType?) -> Void)) {
+        let request = RequestRouter.MediaNew(siteID: siteID, attachedImagePNGData: attachedImagePNGData)
+        manager.encodedMultipartRequest(request) { (request, error) in
             guard let request = request else {
                 completion(media: nil, error: error)
                 return
@@ -69,38 +46,5 @@ public class MediaService {
         return Media(mediaID: mediaID, remoteURL: mediaURL, size: size)
     }
 
-    private func multipartRequest(attachmentURL: NSURL, name: String, siteID: Int, completion: ((request: Request?, error: ErrorType?) -> Void)) {
-        let unencodedRequest = RequestRouter.MediaNew(siteID: siteID)
-
-        manager.upload(unencodedRequest, multipartFormData: { multipartFormData in
-            multipartFormData.appendBodyPart(fileURL: attachmentURL, name: name)
-
-        }, encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .Success(let upload, _, _):
-                completion(request: upload, error: nil)
-            case .Failure(let error):
-                completion(request: nil, error: error)
-            }
-        })
-    }
-
-    private func multipartRequest(payload: NSData, name: String, fileName: String, mimeType: String, siteID: Int, completion: ((request: Request?, error: ErrorType?) -> Void)) {
-        let unencodedRequest = RequestRouter.MediaNew(siteID: siteID)
-
-        manager.upload(unencodedRequest, multipartFormData: { multipartFormData in
-            multipartFormData.appendBodyPart(data: payload, name: name, fileName: fileName, mimeType: mimeType)
-
-        }, encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .Success(let upload, _, _):
-                completion(request: upload, error: nil)
-            case .Failure(let error):
-                completion(request: nil, error: error)
-            }
-        })
-    }
-
-    private let mediaFieldName = "media[]"
     private var manager = Alamofire.Manager.sharedInstance
 }
