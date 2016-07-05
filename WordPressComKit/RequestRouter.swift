@@ -46,7 +46,7 @@ public enum RequestRouter: URLRequestConvertible {
             multipartFormData.appendBodyPart(data: attachedImageData, name: "media[]", fileName: MediaSettings.filename, mimeType: MediaSettings.mimeType)
         case .PostNew(_, let status, let title, let body, let attachedImageData):
             if let attachedImageData = attachedImageData {
-                multipartFormData.appendBodyPart(data: attachedImageData, name: "media[]", fileName: MediaSettings.filename, mimeType: MediaSettings.mimeType)
+                multipartFormData.appendBodyPart(data: attachedImageData, name: "media[0]", fileName: MediaSettings.filename, mimeType: MediaSettings.mimeType)
             }
             if let body = body.dataUsingEncoding(NSUTF8StringEncoding) {
                 multipartFormData.appendBodyPart(data: body, name: "content")
