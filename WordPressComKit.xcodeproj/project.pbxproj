@@ -34,6 +34,7 @@
 		B542DEC01D11D8E7004CA6AE /* media.json in Resources */ = {isa = PBXBuildFile; fileRef = B542DEBF1D11D8E7004CA6AE /* media.json */; };
 		B542DEC21D11D904004CA6AE /* MediaServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B542DEC11D11D904004CA6AE /* MediaServiceTests.swift */; };
 		B542DEC51D11DA49004CA6AE /* wordpress-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B542DEC41D11DA49004CA6AE /* wordpress-logo.png */; };
+		B58E12581D2C480C00E14ACE /* AlamoFire+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58E12571D2C480C00E14ACE /* AlamoFire+Extensions.swift */; };
 		B5CD5CFA1D0B3B9A00C6BD26 /* MediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5CF91D0B3B9A00C6BD26 /* MediaService.swift */; };
 		B5CD5CFC1D0B3EC300C6BD26 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CD5CFB1D0B3EC300C6BD26 /* Media.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		B542DEBF1D11D8E7004CA6AE /* media.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = media.json; sourceTree = "<group>"; };
 		B542DEC11D11D904004CA6AE /* MediaServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaServiceTests.swift; sourceTree = "<group>"; };
 		B542DEC41D11DA49004CA6AE /* wordpress-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordpress-logo.png"; sourceTree = "<group>"; };
+		B58E12571D2C480C00E14ACE /* AlamoFire+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlamoFire+Extensions.swift"; sourceTree = "<group>"; };
 		B5CD5CF91D0B3B9A00C6BD26 /* MediaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaService.swift; sourceTree = "<group>"; };
 		B5CD5CFB1D0B3EC300C6BD26 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 		93340C551C064BD8004CCB0C /* WordPressComKit */ = {
 			isa = PBXGroup;
 			children = (
+				B58E12591D2C481600E14ACE /* Extensions */,
 				93340C6E1C064BE7004CCB0C /* Model */,
 				93340C6D1C064BDE004CCB0C /* Services */,
 				93340C561C064BD8004CCB0C /* WordPressComKit.h */,
@@ -236,6 +239,14 @@
 				B542DEC41D11DA49004CA6AE /* wordpress-logo.png */,
 			);
 			path = "Test Assets";
+			sourceTree = "<group>";
+		};
+		B58E12591D2C481600E14ACE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B58E12571D2C480C00E14ACE /* AlamoFire+Extensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,6 +455,7 @@
 				93340C781C064F8B004CCB0C /* SiteService.swift in Sources */,
 				93340C731C064BF7004CCB0C /* Me.swift in Sources */,
 				93340C761C064F69004CCB0C /* PostService.swift in Sources */,
+				B58E12581D2C480C00E14ACE /* AlamoFire+Extensions.swift in Sources */,
 				9395557B1C11FC87001BC911 /* RequestRouter.swift in Sources */,
 				9395556F1C08DD04001BC911 /* Post.swift in Sources */,
 				939555631C08B73C001BC911 /* DateHelpers.swift in Sources */,
