@@ -27,7 +27,7 @@ public class PostService {
         }
     }
     
-    public func createPost(siteID siteID: Int, status: String, title: String, body: String, attachedImagePNGData: NSData? = nil, completion: (post: Post?, error: ErrorType?) -> Void) {
+    public func createPost(siteID siteID: Int, status: String, title: String, body: String, attachedImagePNGData: NSData? = nil, requestEqueued: (Void -> ())?, completion: (post: Post?, error: ErrorType?) -> Void) {
         let request = RequestRouter.PostNew(siteID: siteID, status: status, title: title, body: body, attachedImagePNGData: attachedImagePNGData)
         manager.encodedMultipartRequest(request) { (request, error) in
             guard let request = request else {
@@ -49,6 +49,8 @@ public class PostService {
                     
                     completion(post: post, error: nil)
             }
+
+            requestEqueued?()
         }
     }
     
