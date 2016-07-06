@@ -1,6 +1,7 @@
 import Foundation
 import Alamofire
 
+
 public class PostService {
     public init() { }
     
@@ -26,21 +27,30 @@ public class PostService {
         }
     }
     
-    public func createPost(siteID siteID: Int, status: String, title: String, body: String, completion: (post: Post?, error: NSError?) -> Void) {
-        manager
-            .request(RequestRouter.PostNew(siteID: siteID, status: status, title: title, body: body))
-            .validate()
-            .responseJSON { response in
-                guard response.result.isSuccess else {
-                    completion(post: nil, error: response.result.error)
-                    return
-                }
-                
-                let json = response.result.value as! [String: AnyObject]
-                
-                let post = self.mapJSONToPost(json)
-                
-                completion(post: post, error: nil)
+    public func createPost(siteID siteID: Int, status: String, title: String, body: String, attachedImageJPEGData: NSData? = nil, requestEqueued: (Void -> ())? = nil, completion: (post: Post?, error: ErrorType?) -> Void) {
+        let request = RequestRouter.PostNew(siteID: siteID, status: status, title: title, body: body, attachedImageJPEGData: attachedImageJPEGData)
+        manager.encodedMultipartRequest(request) { (request, error) in
+            guard let request = request else {
+                completion(post: nil, error: error)
+                return
+            }
+
+            request
+                .validate()
+                .responseJSON { response in
+                    guard response.result.isSuccess else {
+                        completion(post: nil, error: response.result.error)
+                        return
+                    }
+                    
+                    let json = response.result.value as! [String: AnyObject]
+                    
+                    let post = self.mapJSONToPost(json)
+                    
+                    completion(post: post, error: nil)
+            }
+
+            requestEqueued?()
         }
     }
     
