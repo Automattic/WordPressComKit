@@ -32,7 +32,7 @@ public enum RequestRouter: URLRequestConvertible {
         }()
         
         let URL = NSURL(string: RequestRouter.baseURLString)!
-        let request = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path))
+        let request = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path)!)
         request.HTTPMethod = result.method.rawValue
         request.addValue("Bearer \(RequestRouter.bearerToken)", forHTTPHeaderField: "Authorization")
         let encoding = result.method == .POST ? Alamofire.ParameterEncoding.JSON : Alamofire.ParameterEncoding.URL
