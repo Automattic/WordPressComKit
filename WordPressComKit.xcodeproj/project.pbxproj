@@ -267,12 +267,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93340C671C064BD8004CCB0C /* Build configuration list for PBXNativeTarget "WordPressComKit" */;
 			buildPhases = (
+				4AF245D5BCA49CB4AE679C04 /* [CP] Check Pods Manifest.lock */,
 				ACD569C284F96BD854D54515 /* [CP] Check Pods Manifest.lock */,
 				93340C4E1C064BD8004CCB0C /* Sources */,
 				93340C4F1C064BD8004CCB0C /* Frameworks */,
 				93340C501C064BD8004CCB0C /* Headers */,
 				93340C511C064BD8004CCB0C /* Resources */,
 				E414949DE8FD3B4B419062A8 /* [CP] Copy Pods Resources */,
+				9E5EF98E3FABCA8CE7D4974A /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,12 +289,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93340C6A1C064BD8004CCB0C /* Build configuration list for PBXNativeTarget "WordPressComKitTests" */;
 			buildPhases = (
+				A37A6FB930DEC31CB32B5592 /* [CP] Check Pods Manifest.lock */,
 				307C6853530FA6F2673E5288 /* [CP] Check Pods Manifest.lock */,
 				93340C591C064BD8004CCB0C /* Sources */,
 				93340C5A1C064BD8004CCB0C /* Frameworks */,
 				93340C5B1C064BD8004CCB0C /* Resources */,
 				07F41A0C1E481BB48A44BD32 /* [CP] Embed Pods Frameworks */,
 				F08A25D94078394668CCFFE7 /* [CP] Copy Pods Resources */,
+				2ADE74835320F588C24F765A /* 📦 Embed Pods Frameworks */,
+				FB4D57FBB5DD3D59EF522F24 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,9 +321,11 @@
 				TargetAttributes = {
 					93340C521C064BD8004CCB0C = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 					93340C5C1C064BD8004CCB0C = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -381,7 +388,67 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordPressComKit-WordPressComKitTests/Pods-WordPressComKit-WordPressComKitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2ADE74835320F588C24F765A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordPressComKit-WordPressComKitTests/Pods-WordPressComKit-WordPressComKitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		307C6853530FA6F2673E5288 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4AF245D5BCA49CB4AE679C04 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9E5EF98E3FABCA8CE7D4974A /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordPressComKit/Pods-WordPressComKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A37A6FB930DEC31CB32B5592 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,6 +501,21 @@
 			inputPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WordPressComKit-WordPressComKitTests/Pods-WordPressComKit-WordPressComKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB4D57FBB5DD3D59EF522F24 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +674,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -610,6 +693,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.WordPressComKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -621,6 +705,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.WordPressComKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -632,6 +717,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.automattic.WordPressComKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

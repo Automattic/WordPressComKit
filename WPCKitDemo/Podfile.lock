@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.4.0)
-  - WordPressComKit (0.0.1):
+  - WordPressComKit (0.0.4):
     - Alamofire (~> 3.0)
 
 DEPENDENCIES:
@@ -8,11 +8,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   WordPressComKit:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  WordPressComKit: 6f0c39c3e0af3599cd5244e4ec05192f5e4a7882
+  WordPressComKit: 0742c47e5b55bff0e6d26d40db9e010404675a73
 
 PODFILE CHECKSUM: a2b146c642c3d317d93e2621470ac1c9df32225a
 

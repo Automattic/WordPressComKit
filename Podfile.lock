@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.4.0)
+  - Alamofire (3.5.0)
   - OHHTTPStubs (5.0.0):
     - OHHTTPStubs/Default (= 5.0.0)
   - OHHTTPStubs/Core (5.0.0)
@@ -17,14 +17,14 @@ PODS:
     - OHHTTPStubs/Core
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
+  - Alamofire (= 3.5.0)
   - OHHTTPStubs
   - OHHTTPStubs/Swift
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
   OHHTTPStubs: a5d2e9eea07869d42ec03338325f398bc520e159
 
-PODFILE CHECKSUM: 5a67ba1385a07c4e07d8ce75693e97d14ff8ad0d
+PODFILE CHECKSUM: 9714882a7642a036939a3a8e6d5fda8939f05cfe
 
 COCOAPODS: 1.0.1
