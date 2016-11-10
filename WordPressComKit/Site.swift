@@ -1,18 +1,18 @@
 import Foundation
 
-public class Site {
-    public var ID: Int!
-    public var name: String?
-    public var description: String?
-    public var URL: NSURL!
-    public var icon: String?
-    public var jetpack = false
-    public var postCount = 0
-    public var subscribersCount = 0
-    public var language = "en"
-    public var visible = true
-    public var isPrivate = false
-    public var timeZone: NSTimeZone!
+open class Site {
+    open var ID: Int!
+    open var name: String?
+    open var description: String?
+    open var URL: Foundation.URL!
+    open var icon: String?
+    open var jetpack = false
+    open var postCount = 0
+    open var subscribersCount = 0
+    open var language = "en"
+    open var visible = true
+    open var isPrivate = false
+    open var timeZone: TimeZone!
     
     //    "icon": {"img": "https://secure.gravatar.com/blavatar/6f0ad402b5cbfe40cef23c63488742a7", "ico": "https://secure.gravatar.com/blavatar/1de1e43955ffc6998dbd037cb6fb0440"}
     //    "logo": {"id": 0, "sizes": [], "url": ""}

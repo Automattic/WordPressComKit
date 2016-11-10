@@ -1,16 +1,16 @@
 import Foundation
 import Alamofire
 
-public class SiteService {
+open class SiteService {
     public init() {}
     
-    public func fetchSite(siteID: Int, completion: (Site?, NSError?) -> Void) {
+    open func fetchSite(_ siteID: Int, completion: @escaping (Site?, NSError?) -> Void) {
         Alamofire
-            .request(RequestRouter.Site(siteID: siteID))
+            .request(RequestRouter.site(siteID: siteID))
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
-                    completion(nil, response.result.error)
+                    completion(nil, response.result.error as NSError?)
                     return
                 }
                 
@@ -21,13 +21,13 @@ public class SiteService {
         }
     }
     
-    public func fetchSites(showActiveOnly: Bool = true, completion:([Site]?, NSError?) -> Void) {
+    open func fetchSites(_ showActiveOnly: Bool = true, completion:@escaping ([Site]?, NSError?) -> Void) {
         Alamofire
-            .request(RequestRouter.Sites(showActiveOnly: showActiveOnly))
+            .request(RequestRouter.sites(showActiveOnly: showActiveOnly))
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
-                    completion(nil, response.result.error)
+                    completion(nil, response.result.error as NSError?)
                     return
                 }
                 
@@ -40,7 +40,7 @@ public class SiteService {
         }
     }
     
-    func mapJSONToSite(json: [String: AnyObject]) -> Site {
+    func mapJSONToSite(_ json: [String: AnyObject]) -> Site {
         let site = Site()
         
         let rawIcon = json["icon"] as? NSDictionary
@@ -48,7 +48,7 @@ public class SiteService {
         site.ID = json["ID"] as! Int
         site.name = json["name"] as? String
         site.description = json["description"] as? String
-        site.URL = NSURL(string: json["URL"] as! String)
+        site.URL = URL(string: json["URL"] as! String)
         site.icon = rawIcon?["img"] as? String
         site.jetpack = json["jetpack"] as! Bool
         site.postCount = json["post_count"] as! Int
@@ -59,7 +59,7 @@ public class SiteService {
         
         let options = json["options"] as? [String: AnyObject]
         if let timeZoneName = options?["timezone"] as? String {
-            site.timeZone = NSTimeZone(name: timeZoneName)
+            site.timeZone = TimeZone(identifier: timeZoneName)
         }
         
         return site
