@@ -7,9 +7,9 @@ class DateHelpersTests: XCTestCase {
         
         XCTAssertNotNil(date)
         
-        let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        calendar.timeZone = NSTimeZone(name: "UTC")!
-        let dateComponents = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: date!)
+        var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
         
         XCTAssertEqual(2006, dateComponents.year)
         XCTAssertEqual(1, dateComponents.month)

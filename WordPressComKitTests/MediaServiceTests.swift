@@ -23,17 +23,17 @@ class MediaServiceTests: XCTestCase {
         let mediaSize = CGSize(width: 3000, height: 2002)
         let remoteURL = "https://lanteanartest.files.wordpress.com/2016/06/img_00035.jpg"
 
-        stub(isMethodPOST() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/sites/\(siteID)/media/new")) { _ in
-            let stubPath = OHPathForFile("media.json", self.dynamicType)
-            return fixture(stubPath!, headers: ["Content-Type": "application/json"])
+        stub(condition: isMethodPOST() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/sites/\(siteID)/media/new")) { _ in
+            let stubPath = OHPathForFile("media.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject: "application/json" as AnyObject])
         }
 
-        let expectation = self.expectationWithDescription("CreateMedia")
+        let expectation = self.expectation(description: "CreateMedia")
 
-        let imageURL = NSBundle(forClass: self.dynamicType).URLForResource("wordpress-logo", withExtension: "png")
+        let imageURL = Bundle(for: type(of: self)).url(forResource: "wordpress-logo", withExtension: "png")
         XCTAssertNotNil(imageURL)
 
-        let imageData = NSData(contentsOfURL: imageURL!)
+        let imageData = try? Data(contentsOf: imageURL!)
         XCTAssertNotNil(imageData)
 
         let rawImage = UIImage(data: imageData!)
@@ -52,6 +52,6 @@ class MediaServiceTests: XCTestCase {
             expectation.fulfill()
         }
 
-        self.waitForExpectationsWithTimeout(2.0, handler: nil)
+        self.waitForExpectations(timeout: 2.0, handler: nil)
     }
 }
