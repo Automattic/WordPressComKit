@@ -82,7 +82,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/Automattic/WordPressComKit.git", :tag => "0.0.5" }
+  s.source       = { :git => "https://github.com/Automattic/WordPressComKit.git", :tag => "0.0.6" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -136,6 +136,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
-  s.dependency "Alamofire", "4.0.1"
+  s.dependency "Alamofire", "4.2.0"
 
 end
