@@ -2,20 +2,20 @@ import Foundation
 import Alamofire
 
 
-public class PostService {
+open class PostService {
     public init() { }
     
-    public init(configuration: NSURLSessionConfiguration) {
-        manager = Alamofire.Manager(configuration: configuration)
+    public init(configuration: URLSessionConfiguration) {
+        manager = Alamofire.SessionManager(configuration: configuration)
     }
     
-    public func fetchPost(postID: Int, siteID: Int, completion: (post: Post?, error: NSError?) -> Void) {
+    open func fetchPost(_ postID: Int, siteID: Int, completion: @escaping (_ post: Post?, _ error: Error?) -> Void) {
         manager
-            .request(RequestRouter.Post(postID: postID, siteID: siteID))
+            .request(RequestRouter.post(postID: postID, siteID: siteID))
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
-                    completion(post: nil, error: response.result.error)
+                    completion(nil, response.result.error)
                     return
                 }
                 
@@ -23,15 +23,15 @@ public class PostService {
                 
                 let post = self.mapJSONToPost(json)
                 
-                completion(post: post, error: nil)
+                completion(post, nil)
         }
     }
     
-    public func createPost(siteID siteID: Int, status: String, title: String, body: String, attachedImageJPEGData: NSData? = nil, requestEqueued: (Void -> ())? = nil, completion: (post: Post?, error: ErrorType?) -> Void) {
-        let request = RequestRouter.PostNew(siteID: siteID, status: status, title: title, body: body, attachedImageJPEGData: attachedImageJPEGData)
+    open func createPost(siteID: Int, status: String, title: String, body: String, attachedImageJPEGData: Data? = nil, requestEqueued: ((Void) -> ())? = nil, completion: @escaping (_ post: Post?, _ error: Error?) -> Void) {
+        let request = RequestRouter.postNew(siteID: siteID, status: status, title: title, body: body, attachedImageJPEGData: attachedImageJPEGData)
         manager.encodedMultipartRequest(request) { (request, error) in
             guard let request = request else {
-                completion(post: nil, error: error)
+                completion(nil, error)
                 return
             }
 
@@ -39,7 +39,7 @@ public class PostService {
                 .validate()
                 .responseJSON { response in
                     guard response.result.isSuccess else {
-                        completion(post: nil, error: response.result.error)
+                        completion(nil, response.result.error)
                         return
                     }
                     
@@ -47,14 +47,14 @@ public class PostService {
                     
                     let post = self.mapJSONToPost(json)
                     
-                    completion(post: post, error: nil)
+                    completion(post, nil)
             }
 
             requestEqueued?()
         }
     }
     
-    func mapJSONToPost(json: [String: AnyObject]) -> Post {
+    func mapJSONToPost(_ json: [String: AnyObject]) -> Post {
         let post = Post()
         post.ID = json["ID"] as? Int
         post.siteID = json["site_ID"] as! Int
@@ -64,10 +64,10 @@ public class PostService {
         }
         post.title = json["title"] as? String
         if let postURL = json["URL"] as? String {
-            post.URL = NSURL(string: postURL)!
+            post.URL = URL(string: postURL)!
         }
         if let postShortURL = json["short_URL"] as? String {
-            post.shortURL = NSURL(string: postShortURL)!
+            post.shortURL = URL(string: postShortURL)!
         }
         post.content = json["content"] as? String
         post.guid = json["guid"] as? String
@@ -76,5 +76,5 @@ public class PostService {
         return post
     }
     
-    private var manager = Alamofire.Manager.sharedInstance
+    fileprivate var manager = Alamofire.SessionManager.default
 }

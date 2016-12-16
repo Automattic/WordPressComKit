@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WordPressComKit"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "Quickly connect to WordPress.com and perform common actions."
 
   # This description is used to generate tags and improve search results.
@@ -136,6 +136,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
-  s.dependency "Alamofire", "~> 3.0"
+  s.dependency "Alamofire", "4.0.1"
 
 end

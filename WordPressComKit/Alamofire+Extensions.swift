@@ -4,18 +4,17 @@ import Alamofire
 
 /// Alamofire.Manager Helper Methods
 ///
-extension Alamofire.Manager
+extension Alamofire.SessionManager
 {
-    public func encodedMultipartRequest(request: RequestRouter, completion: ((request: Request?, error: ErrorType?) -> Void)) {
-        upload(request, multipartFormData: { multipartFormData in
+    public func encodedMultipartRequest(_ request: RequestRouter, completion: @escaping ((_ request: UploadRequest?, _ error: Error?) -> Void)) {
+        upload(multipartFormData: { multipartFormData in
             request.loadMultipartFields(multipartFormData)
-
-        }, encodingCompletion: { encodingResult in
+        }, with: request, encodingCompletion: { encodingResult in
             switch encodingResult {
-            case .Success(let upload, _, _):
-                completion(request: upload, error: nil)
-            case .Failure(let error):
-                completion(request: nil, error: error)
+            case .success(let upload, _, _):
+                completion(upload, nil)
+            case .failure(let error):
+                completion(nil, error)
             }
         })
     }

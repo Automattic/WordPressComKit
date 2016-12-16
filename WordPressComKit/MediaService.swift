@@ -2,36 +2,36 @@ import Foundation
 import Alamofire
 
 
-public class MediaService {
+open class MediaService {
     public init() { }
 
-    public init(configuration: NSURLSessionConfiguration) {
-        manager = Alamofire.Manager(configuration: configuration)
+    public init(configuration: URLSessionConfiguration) {
+        manager = Alamofire.SessionManager(configuration: configuration)
     }
 
-    public func createMedia(attachedImageJPEGData: NSData, siteID: Int, completion: ((media: Media?, error: ErrorType?) -> Void)) {
-        let request = RequestRouter.MediaNew(siteID: siteID, attachedImageJPEGData: attachedImageJPEGData)
+    open func createMedia(_ attachedImageJPEGData: Data, siteID: Int, completion: @escaping ((_ media: Media?, _ error: Error?) -> Void)) {
+        let request = RequestRouter.mediaNew(siteID: siteID, attachedImageJPEGData: attachedImageJPEGData)
         manager.encodedMultipartRequest(request) { (request, error) in
             guard let request = request else {
-                completion(media: nil, error: error)
+                completion(nil, error)
                 return
             }
 
             request.responseJSON { response in
                 guard response.result.isSuccess else {
-                    completion(media: nil, error: response.result.error)
+                    completion(nil, response.result.error)
                     return
                 }
 
                 let json = response.result.value as! [String: AnyObject]
                 let media = self.mapJSONToMedia(json)
 
-                completion(media: media, error: nil)
+                completion(media, nil)
             }
         }
     }
 
-    private func mapJSONToMedia(json: [String: AnyObject]) -> Media? {
+    fileprivate func mapJSONToMedia(_ json: [String: AnyObject]) -> Media? {
         guard let rawMediaList = json["media"] as? [[String: AnyObject]],
             let rawMedia = rawMediaList.first,
             let mediaID = rawMedia["ID"] as? Int,
@@ -46,5 +46,5 @@ public class MediaService {
         return Media(mediaID: mediaID, remoteURL: mediaURL, size: size)
     }
 
-    private var manager = Alamofire.Manager.sharedInstance
+    fileprivate var manager = Alamofire.SessionManager.default
 }

@@ -1,16 +1,16 @@
 import Foundation
 import Alamofire
 
-public class MeService {
+open class MeService {
     public init() {}
     
-    public func fetchMe(completion: (Me?, NSError?) -> Void) {
+    open func fetchMe(_ completion: @escaping (Me?, Error?) -> Void) {
         Alamofire
-            .request(RequestRouter.Me())
+            .request(RequestRouter.me())
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
-                    completion(nil, response.result.error)
+                    completion(nil, response.result.error as Error?)
                     return
                 }
                 
@@ -22,14 +22,14 @@ public class MeService {
                 me.email = json!["email"] as? String
                 me.primaryBlogID = json!["primary_blog"] as? Int
                 if let primaryBlogURLPath = json!["primary_blog_url"] as? String {
-                    me.primaryBlogURL = NSURL(string: primaryBlogURLPath)
+                    me.primaryBlogURL = URL(string: primaryBlogURLPath)
                 }
                 me.language = json!["language"] as? String
                 if let avatarURLPath = json!["avatar_URL"] as? String {
-                    me.avatarURL = NSURL(string: avatarURLPath)
+                    me.avatarURL = URL(string: avatarURLPath)
                 }
                 if let profileURLPath = json!["profile_URL"] as? String {
-                    me.profileURL = NSURL(string: profileURLPath)
+                    me.profileURL = URL(string: profileURLPath)
                 }
                 me.verified = json!["verified"] as! Bool
                 me.emailVerified = json!["email_verified"] as! Bool

@@ -19,12 +19,12 @@ class MeServiceTests: XCTestCase {
     }
     
     func testFetchMe() {
-        stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me")) { _ in
-            let stubPath = OHPathForFile("me.json", self.dynamicType)
-            return fixture(stubPath!, headers: ["Content-Type": "application/json"])
+        stub(condition: isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me")) { _ in
+            let stubPath = OHPathForFile("me.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject: "application/json" as AnyObject])
         }
 
-        let expectation = self.expectationWithDescription("FetchMe")
+        let expectation = self.expectation(description: "FetchMe")
         
         subject.fetchMe { me, error -> Void in
             expectation.fulfill()
@@ -32,16 +32,16 @@ class MeServiceTests: XCTestCase {
             XCTAssertNil(error)
         }
         
-        self.waitForExpectationsWithTimeout(2.0, handler: nil)
+        self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
     func testFetchMe2() {
-        stub(isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me")) { _ in
-            let stubPath = OHPathForFile("me-2.json", self.dynamicType)
-            return fixture(stubPath!, headers: ["Content-Type": "application/json"])
+        stub(condition: isMethodGET() && isHost("public-api.wordpress.com") && isPath("/rest/v1.1/me")) { _ in
+            let stubPath = OHPathForFile("me-2.json", type(of: self))
+            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject: "application/json" as AnyObject])
         }
         
-        let expectation = self.expectationWithDescription("FetchMe")
+        let expectation = self.expectation(description: "FetchMe")
         
         subject.fetchMe { me, error -> Void in
             expectation.fulfill()
@@ -49,7 +49,7 @@ class MeServiceTests: XCTestCase {
             XCTAssertNil(error)
         }
         
-        self.waitForExpectationsWithTimeout(2.0, handler: nil)
+        self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
 }

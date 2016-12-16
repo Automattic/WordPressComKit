@@ -1,15 +1,15 @@
 import Foundation
 
-public class Post {
-    public var ID: Int?
-    public var siteID: Int!
-    public var created: NSDate!
-    public var updated: NSDate?
-    public var title: String?
-    public var URL: NSURL?
-    public var shortURL: NSURL?
-    public var content: String?
-    public var guid: String?
-    public var status: String?
-    public var featuredImageURL: NSURL?
+open class Post {
+    open var ID: Int?
+    open var siteID: Int!
+    open var created: Date!
+    open var updated: Date?
+    open var title: String?
+    open var URL: Foundation.URL?
+    open var shortURL: Foundation.URL?
+    open var content: String?
+    open var guid: String?
+    open var status: String?
+    open var featuredImageURL: Foundation.URL?
 }
