@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'WordPressComKit' do
-  pod 'Alamofire', '4.0.1'
+  pod 'Alamofire', '4.2.0'
 
   target 'WordPressComKitTests' do
     pod 'OHHTTPStubs'
