@@ -27,7 +27,7 @@ open class PostService {
         }
     }
     
-    open func createPost(siteID: Int, status: String, title: String, body: String, attachedImageJPEGData: Data? = nil, requestEqueued: ((Void) -> ())? = nil, completion: @escaping (_ post: Post?, _ error: Error?) -> Void) {
+    open func createPost(siteID: Int, status: String, title: String, body: String, attachedImageJPEGData: Data? = nil, requestEqueued: (() -> Void)? = nil, completion: @escaping (_ post: Post?, _ error: Error?) -> Void) {
         let request = RequestRouter.postNew(siteID: siteID, status: status, title: title, body: body, attachedImageJPEGData: attachedImageJPEGData)
         manager.encodedMultipartRequest(request) { (request, error) in
             guard let request = request else {
